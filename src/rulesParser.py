@@ -66,10 +66,9 @@ class RulesParser:
             for idx, content in enumerate(contents):
                 if idx == 0:
                     continue
-                print(idx, content)
                 signature=content.split(';')[0]
                 RulesParser.logger.info('new signature: %s ',signature)
-                hexSignature="".join([hex(ord(char))[2:].zfill(2) for char in signature])
+                hexSignature=signature.encode("hex")
                 all_signatures[signature]=hexSignature
         return all_signatures
 
